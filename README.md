@@ -73,3 +73,8 @@ public/data/faithful.csv   original data file
 - Chapter I's yield field, Chapter II's pulses and Chapter IV part 2 are **simulated** with known ground truth, so the game can always tell you what actually happened.
 
 Tech: Three.js, Vite, vanilla JS, Canvas 2D charts, WebAudio. No external services. Fonts are bundled.
+
+## Deployment
+
+Live at **https://halcyon.zapdos.me** (Oracle VPS, PM2 app `halcyon` → `server.cjs` on `127.0.0.1:3108`, Caddy reverse proxy).
+Update: `npm run build`, upload `dist/ server.cjs ecosystem.config.cjs` into a new `/home/ubuntu/halcyon/releases/<timestamp>`, repoint `/home/ubuntu/halcyon/current`, then `pm2 startOrReload /home/ubuntu/halcyon/current/ecosystem.config.cjs --only halcyon --update-env && pm2 save`.
