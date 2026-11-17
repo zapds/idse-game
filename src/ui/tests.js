@@ -105,9 +105,9 @@ export function runTest(kind /* 'pre' | 'post' */) {
       p.setTitle('Your results', 'Debrief');
       const pre = s.pre;
       p.content.append(h('div', { class: 'stats', style: { marginBottom: '16px' } },
-        h('div', { class: 'stat' }, h('div', { class: 'k' }, 'Before'), h('div', { class: 'v' }, `${pre?.score ?? '—'} / ${qs.length}`)),
-        h('div', { class: 'stat' }, h('div', { class: 'k' }, 'After'), h('div', { class: 'v cyan-t' }, `${rec.score} / ${qs.length}`)),
-        h('div', { class: 'stat' }, h('div', { class: 'k' }, 'Change'), h('div', { class: 'v ' + ((rec.score - (pre?.score ?? 0)) >= 0 ? 'good-t' : 'bad-t') }, `${rec.score - (pre?.score ?? 0) >= 0 ? '+' : ''}${rec.score - (pre?.score ?? 0)}`))));
+        pre && h('div', { class: 'stat' }, h('div', { class: 'k' }, 'Before'), h('div', { class: 'v' }, `${pre.score} / ${qs.length}`)),
+        h('div', { class: 'stat' }, h('div', { class: 'k' }, pre ? 'After' : 'Score'), h('div', { class: 'v cyan-t' }, `${rec.score} / ${qs.length}`)),
+        pre && h('div', { class: 'stat' }, h('div', { class: 'k' }, 'Change'), h('div', { class: 'v ' + ((rec.score - pre.score) >= 0 ? 'good-t' : 'bad-t') }, `${rec.score - pre.score >= 0 ? '+' : ''}${rec.score - pre.score}`))));
       qs.forEach((q, i) => {
         p.content.append(h('div', { class: 'callout ' + (correct[i] ? 'good' : 'bad') },
           h('div', { style: { fontWeight: 600, marginBottom: '4px' } }, `${correct[i] ? '✓' : '✗'} Q${i + 1} · ${CONCEPTS[i]}${pre ? (pre.correct[i] ? '' : correct[i] ? ' · newly correct' : '') : ''}`),

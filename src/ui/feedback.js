@@ -33,8 +33,8 @@ export function resultsScreen({ onReplay, onTitle }) {
   const pre = s.pre?.score ?? 0, post = s.post?.score ?? 0, of = s.post?.of ?? 9;
   p.content.append(
     h('div', { class: 'stats' },
-      h('div', { class: 'stat' }, h('div', { class: 'k' }, 'Before'), h('div', { class: 'v' }, `${pre}/${of}`)),
-      h('div', { class: 'stat' }, h('div', { class: 'k' }, 'After'), h('div', { class: 'v cyan-t' }, `${post}/${of}`)),
+      s.pre && h('div', { class: 'stat' }, h('div', { class: 'k' }, 'Before'), h('div', { class: 'v' }, `${pre}/${of}`)),
+      h('div', { class: 'stat' }, h('div', { class: 'k' }, s.pre ? 'After' : 'Quiz'), h('div', { class: 'v cyan-t' }, `${post}/${of}`)),
       h('div', { class: 'stat' }, h('div', { class: 'k' }, 'Evidence'), h('div', { class: 'v' }, `${s.ending?.score ?? 0}/8`)),
       h('div', { class: 'stat' }, h('div', { class: 'k' }, 'Session'), h('div', { class: 'v', style: { fontSize: '14px' } }, s.sessionId))),
     h('p', { class: 'lead', style: { marginTop: '14px' }, html: 'Thank you for playing! If you’re part of a playtest, <b>download your results file</b> and send it to the organiser. It contains your answers, decisions and feedback, and nothing else.' }));

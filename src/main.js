@@ -214,7 +214,6 @@ async function newGame(alias = '') {
   hud.probes = []; rover.damage = 0;
   rover.teleport(8, -62, 0.68);
   mode = 'busy';
-  await runTest('pre');
   await intro();
   game.state.chapter = 1; save();
   mode = 'play'; hud.show(true); refreshObjective();

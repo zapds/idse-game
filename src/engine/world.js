@@ -353,8 +353,9 @@ export class World {
     const plantGeo = new THREE.ConeGeometry(0.5, 1.4, 5);
     this.domes = [];
     const defs = [
-      { dx: -14, dz: -6, r: 7, big: false }, { dx: 0, dz: -12, r: 7, big: false }, { dx: 13, dz: -4, r: 7, big: false },
-      { dx: -10, dz: 12, r: 10, big: true }, { dx: 12, dz: 12, r: 10, big: true },
+      // spaced so the rover can drive between domes into the central courtyard (beacon)
+      { dx: -21, dz: -9, r: 7, big: false }, { dx: 0, dz: -18, r: 7, big: false }, { dx: 20, dz: -8, r: 7, big: false },
+      { dx: -15, dz: 18, r: 10, big: true }, { dx: 18, dz: 18, r: 10, big: true },
     ];
     for (const d of defs) {
       const x = SITES.domes.x + d.dx, z = SITES.domes.z + d.dz;
